@@ -9,14 +9,14 @@ def test_health():
         response = requests.get(f"{BASE_URL}/")
         if response.status_code == 200:
             data = response.json()
-            print("✅ Connection successful!")
+            print("[SUCCESS] Connection successful!")
             print(f"Server Response: {data}")
             return True
         else:
-            print(f"❌ Connection failed. Server returned status code: {response.status_code}")
+            print(f"[ERROR] Connection failed. Server returned status code: {response.status_code}")
             return False
     except requests.exceptions.ConnectionError:
-        print("❌ Connection error: Could not reach the server.")
+        print("[ERROR] Connection error: Could not reach the server.")
         print(f"Please ensure the backend server is running on {BASE_URL}")
         print("To start the server, run: uvicorn main:app --reload (inside the server directory)")
         return False
