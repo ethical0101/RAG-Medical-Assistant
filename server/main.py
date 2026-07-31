@@ -26,3 +26,8 @@ app.middleware("http")(catch_exception_middleware)
 app.include_router(upload_router, prefix="/api", tags=["Upload PDFs"])
 #2. asking query
 app.include_router(ask_router, prefix="/api", tags=["Ask Question"])
+
+@app.get("/")
+async def root():
+    return {"status": "healthy", "message": "RAG Medical Agent API is running"}
+
